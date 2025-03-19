@@ -21,7 +21,7 @@
         </tr>
         </tbody>
       </table>
-      <%= link_to "Edit", edit_user_path(current_user), class: "btn btn-outline-secondary btn-block" %>
+      <%= link_to "Edit", edit_user_path(@user), class: "btn btn-outline-secondary btn-block" %>
 
   <h2>New Books</h2>
   <%= render 'books/book', book: @book %>
