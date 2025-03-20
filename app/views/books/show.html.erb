@@ -31,30 +31,33 @@
       <%= render 'book', book: @booknew %>
     </div>
 
-   <div class="col-md-8 offset-md-1">
-    <h1>Book detail</h1>
-    <table class =tableusershow>
-      <tbody>
-        <tr>
+    <div class="col-md-8 offset-md-1">
+      <h1>Book detail</h1>
+      <table class="table">
+        <tbody>
           <td>
             <% if @book.user.profile_image.attached? %>
               <%= image_tag @book.user.profile_image, size: "100x100" %>
             <% else %>
               <%= image_tag 'default-image.jpg', size: "100x100" %>
-            <% end %>
+            <% end %></br>
+            <%= link_to @book.user.name, user_path(@book.user) %>
           </td>
+
           <td><%= link_to @book.title %></td>
           <td><%= @book.body %></td>
-          <% if @book.user == current_user %>
-            <td><%= link_to "Edit", edit_book_path(@book)%></td>
-            <td><%= link_to "Destroy", book_path(@book), method: :delete %></td>
-          <% end %>
-        </tr>
-        <tr>
-          <td><%= link_to @book.user.name, user_path(@book.user) %></td>
-        </tr>
-      </tbody>
-    </table>
+          <td>
+            <% if @book.user == current_user %>
+              <td>
+              <%= link_to "Edit", edit_book_path(@book), class:"btn btn-sm btn-success" %>
+              </td>
+              <td>
+              <%= link_to "Destroy", book_path(@book), method: :delete, class: "btn btn-sm btn-danger" %>
+              </td>
+            <% end %>
+          </td>
+        </tbody>
+      </table>
     </div>
   </div>
 </div>
